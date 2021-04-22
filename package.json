@@ -1,0 +1,25 @@
+{
+  "name": "react-template",
+  "version": "0.0.1",
+  "description": "react项目模板",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "react项目模板"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "css-loader": "^5.2.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "scss": "^0.2.4",
+    "scss-loader": "0.0.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.35.0"
+  }
+}

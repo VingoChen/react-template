@@ -39,5 +39,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+    'global-require': 0,
   },
 };

@@ -16,18 +16,20 @@ const getCssLoaders = importLoaders => [
   {
     loader: 'postcss-loader',
     options: {
-      indent: 'postcss',
-      plugins: [
-        require('postcss-flexbugs-fixes'),
-        require('postcss-preset-env')({
-          autoprefixer: {
-            grid: true,
-            flexbox: 'no-2009',
-          },
-          stage: 3,
-        }),
-        require('postcss-normalize'),
-      ],
+      postcssOptions: {
+        indent: 'postcss',
+        plugins: [
+          require('postcss-flexbugs-fixes'),
+          require('postcss-preset-env')({
+            autoprefixer: {
+              grid: true,
+              flexbox: 'no-2009',
+            },
+            stage: 3,
+          }),
+          require('postcss-normalize'),
+        ],
+      },
       sourceMap: IS_DEV,
     },
   },
@@ -35,10 +37,10 @@ const getCssLoaders = importLoaders => [
 
 module.exports = {
   entry: {
-    app: path.resolve(PROJECT_PATH, 'src/index.ts'),
+    app: path.resolve(PROJECT_PATH, 'src/index.tsx'),
   },
   output: {
-    filename: `js/[name]${IS_DEV ? '' : '.[hash:8]'}.js`,
+    filename: `js/[name]${IS_DEV ? '' : '.[contenthash:8]'}.js`,
     path: path.resolve(PROJECT_PATH, 'dist'),
   },
   plugins: [

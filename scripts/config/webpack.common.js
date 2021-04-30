@@ -1,22 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const path = require('path');
-const { IS_DEV, PROJECT_PATH } = require('../constant');
+const paths = require('../paths');
+const { isDevelopment, isProduction } = require('../env');
+const { imageInlineSizeLimit } = require('../conf');
 
 const getCssLoaders = importLoaders => [
-  IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+  isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
     options: {
       modules: false,
-      sourceMap: IS_DEV,
+      sourceMap: isDevelopment,
       importLoaders,
     },
   },
@@ -24,81 +21,57 @@ const getCssLoaders = importLoaders => [
     loader: 'postcss-loader',
     options: {
       postcssOptions: {
-        indent: 'postcss',
         plugins: [
           require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
-            autoprefixer: {
-              grid: true,
-              flexbox: 'no-2009',
+          isProduction && [
+            'postcss-preset-env',
+            {
+              autoprefixer: {
+                grid: true,
+                flexbox: 'no-2009',
+              },
+              stage: 3,
             },
-            stage: 3,
-          }),
-          require('postcss-normalize'),
-        ],
+          ],
+        ].filter(Boolean),
       },
-      sourceMap: IS_DEV,
     },
   },
 ];
 
 module.exports = {
   entry: {
-    app: path.resolve(PROJECT_PATH, 'src/index.tsx'),
-  },
-  output: {
-    filename: `js/[name]${IS_DEV ? '' : '.[contenthash:8]'}.js`,
-    path: path.resolve(PROJECT_PATH, 'dist'),
+    app: paths.appIndex,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(PROJECT_PATH, './public/index.html'),
-      filename: 'index.html',
-      cache: false,
-      minify: IS_DEV
-        ? false
-        : {
-            removeAttributeQuotes: true,
-            collapseWhitespace: true,
-            removeComments: true,
-            collapseBooleanAttributes: true,
-            collapseInlineTagWhitespace: true,
-            removeRedundantAttributes: true,
-            removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
-            minifyCSS: true,
-            minifyJS: true,
-            minifyURLs: true,
-            useShortDoctype: true,
-          },
+      template: paths.appHtml,
+      cache: true,
     }),
     new CopyPlugin({
       patterns: [
         {
-          context: path.resolve(PROJECT_PATH, './public'),
+          context: paths.appPublic,
           from: '*',
-          to: path.resolve(PROJECT_PATH, './dist'),
+          to: paths.appBuild,
           toType: 'dir',
+          globOptions: {
+            dot: true,
+            gitignore: true,
+            ignore: ['**/index.html'],
+          },
         },
       ],
     }),
     new WebpackBar({
-      name: IS_DEV ? 'RUNNING' : 'BUNDLING',
-      color: IS_DEV ? '#52c41a' : '#722ed1',
+      name: isDevelopment ? 'RUNNING' : 'BUNDLING',
+      color: isDevelopment ? '#52c41a' : '#722ed1',
     }),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        configFile: path.resolve(PROJECT_PATH, './tsconfig.json'),
+        configFile: paths.appTsConfig,
       },
     }),
-    new HardSourceWebpackPlugin(),
-    new CleanWebpackPlugin(),
-    !IS_DEV &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].css',
-        ignoreOrder: false,
-      }),
   ],
   module: {
     rules: [
@@ -119,56 +92,38 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: IS_DEV,
+              sourceMap: isDevelopment,
             },
           },
         ],
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10 * 1024,
-              name: '[name].[contenthash:8].[ext]',
-              outputPath: 'assets/images',
-            },
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: imageInlineSizeLimit,
           },
-        ],
+        },
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[contenthash:8].[ext]',
-              outputPath: 'assets/fonts',
-            },
-          },
-        ],
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      Src: paths.appSrc,
+      Components: paths.appSrcComponents,
+      Utils: paths.appSrcUtils,
+    },
   },
-  optimization: {
-    minimize: !IS_DEV,
-    minimizer: [
-      !IS_DEV &&
-        new TerserPlugin({
-          extractComments: false,
-          terserOptions: {
-            compress: { pure_funcs: ['console.log'] },
-          },
-        }),
-      !IS_DEV && new OptimizeCssAssetsPlugin(),
-    ].filter(Boolean),
-    splitChunks: {
-      chunks: 'all',
-      name: true,
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
     },
   },
 };

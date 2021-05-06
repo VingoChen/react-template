@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('../paths');
 const { isDevelopment, isProduction } = require('../env');
-const { imageInlineSizeLimit } = require('../conf');
+const { IMAGE_INLINE_SIZE_LIMIT } = require('../conf');
 
 const getCssLoaders = importLoaders => [
   isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -102,7 +102,7 @@ module.exports = {
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: imageInlineSizeLimit,
+            maxSize: IMAGE_INLINE_SIZE_LIMIT,
           },
         },
       },

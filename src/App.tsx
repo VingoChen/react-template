@@ -5,7 +5,7 @@ interface IProps {
   name: string;
 }
 
-const App: React.FC<IProps> = props => (
+const App: React.FC<IProps> = (props) => (
   // const { name, age } = props;
   <div>
     hello react

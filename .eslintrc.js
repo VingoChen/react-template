@@ -115,5 +115,14 @@ module.exports = {
     'no-use-before-define': OFF,
     'no-restricted-syntax': OFF,
     'no-continue': OFF,
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'config', // for axios interceptor
+        ],
+      },
+    ],
   },
 };

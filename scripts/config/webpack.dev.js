@@ -37,6 +37,7 @@ module.exports = merge(common, {
     open: true,
     hot: true,
     noInfo: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HotModuleReplacementPlugin(),

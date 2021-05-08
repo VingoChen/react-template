@@ -44,7 +44,12 @@ module.exports = {
         js: 'never',
       },
     ],
-    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+    'import/no-extraneous-dependencies': [
+      ERROR,
+      {
+        devDependencies: true,
+      },
+    ],
     'import/prefer-default-export': OFF,
     'import/no-unresolved': ERROR,
     'import/no-dynamic-require': OFF,
@@ -88,7 +93,12 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': WARN,
     'no-unused-vars': OFF,
 
-    'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', 'ts', '.jsx', 'js'] }],
+    'react/jsx-filename-extension': [
+      ERROR,
+      {
+        extensions: ['.tsx', 'ts', '.jsx', 'js'],
+      },
+    ],
     'react/jsx-indent-props': [ERROR, 2],
     'react/jsx-indent': [ERROR, 2],
     'react/jsx-one-expression-per-line': OFF,
@@ -116,7 +126,7 @@ module.exports = {
     'no-restricted-syntax': OFF,
     'no-continue': OFF,
     'no-param-reassign': [
-      'error',
+      ERROR,
       {
         props: true,
         ignorePropertyModificationsFor: [
@@ -124,5 +134,7 @@ module.exports = {
         ],
       },
     ],
+
+    'object-curly-newline': [OFF, 'always'],
   },
 };

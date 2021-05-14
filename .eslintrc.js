@@ -12,7 +12,7 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
     'plugin:react/recommended',
-    'plugin:unicorn/recommended',
+    // 'plugin:unicorn/recommended',
     'plugin:promise/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -91,6 +91,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': OFF,
     '@typescript-eslint/no-use-before-define': ERROR,
     '@typescript-eslint/no-unused-vars': WARN,
+    '@typescript-eslint/no-namespace': OFF,
     'no-unused-vars': OFF,
 
     'react/jsx-filename-extension': [
@@ -116,6 +117,7 @@ module.exports = {
     'linebreak-style': [ERROR, 'unix'],
     quotes: [ERROR, 'single'],
     semi: [ERROR, 'always'],
+    'no-shadow': OFF,
     'no-unused-expressions': WARN,
     'no-plusplus': OFF,
     'no-console': OFF,

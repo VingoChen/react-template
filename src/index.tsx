@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
-
 import './index.scss';
+import { store } from './models';
 
 if (module && module.hot) {
   module.hot.accept();
 }
 
-ReactDOM.render(<App name='aaa' />, document.querySelector('#root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App name='aaa' />
+  </Provider>,
+  document.querySelector('#root'),
+);

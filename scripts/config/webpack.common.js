@@ -1,8 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 const paths = require('../paths');
 const { IMAGE_INLINE_SIZE_LIMIT } = require('../conf');
+const envStringified = require('../env');
 
 module.exports = {
   entry: {
@@ -32,6 +34,9 @@ module.exports = {
       typescript: {
         configFile: paths.appTsConfig,
       },
+    }),
+    new DefinePlugin({
+      'process.env': envStringified,
     }),
   ],
   module: {

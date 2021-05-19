@@ -5,6 +5,8 @@ import App from './App';
 import 'Src/styles/index.scss';
 import { store } from './models';
 
+// console.log(process.env);
+
 if (module && module.hot) {
   module.hot.accept();
 }

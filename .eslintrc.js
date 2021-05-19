@@ -133,6 +133,7 @@ module.exports = {
         props: true,
         ignorePropertyModificationsFor: [
           'config', // for axios interceptor
+          'env', // for env config
         ],
       },
     ],

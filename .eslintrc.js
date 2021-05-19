@@ -138,5 +138,8 @@ module.exports = {
     ],
 
     'object-curly-newline': [OFF, 'always'],
+    'operator-linebreak': [OFF, 'none'],
+    'implicit-arrow-linebreak': [OFF, 'beside'],
+    'function-paren-newline': [OFF, 'never'],
   },
 };

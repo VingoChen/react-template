@@ -22,7 +22,9 @@ const moduleFileExtensions = ['ts', 'tsx', 'js', 'jsx'];
  * file path
  */
 function resolveModule(resolveFn, filePath) {
-  const extension = moduleFileExtensions.find((ex) => fs.existsSync(resolveFn(`${filePath}.${ex}`)));
+  const extension = moduleFileExtensions.find((ex) =>
+    fs.existsSync(resolveFn(`${filePath}.${ex}`)),
+  );
 
   if (extension) {
     return resolveFn(`${filePath}.${extension}`);

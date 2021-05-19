@@ -4,7 +4,7 @@ const ip = require('ip');
 const divider = chalk.gray('-----------------------------------');
 
 const logger = {
-  error: err => {
+  error: (err) => {
     console.error(chalk.red(err));
   },
   start: (port, host) => {

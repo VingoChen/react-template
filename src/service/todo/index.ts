@@ -5,6 +5,7 @@ const TodoApi = {
   getTodoList() {
     // return request<ITodoItem[]>({
     //   method: 'GET',
+    //   url: 'xxx',
     // });
     return new Promise<ITodoItem[]>((resolve) => {
       setTimeout(() => {

@@ -9,16 +9,17 @@ interface ResponseData<T> {
   msg: string;
 }
 
-// 指定请求类型
-axios.defaults.headers = {
-  'Content-Type': 'application/json;charset=utf-8',
-};
-
-// 指定请求地址
-axios.defaults.baseURL = 'xxxx';
+// 默认配置
+const service = axios.create({
+  baseURL: process.env.BASE_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+  },
+});
 
 // 请求拦截
-axios.interceptors.request.use(
+service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     const token = getToken();
 
@@ -35,19 +36,29 @@ axios.interceptors.request.use(
 );
 
 // 响应拦截
-axios.interceptors.response.use((response: AxiosResponse<ResponseData<any>>) => {
-  if (!response.data) {
-    return Promise.resolve(response);
-  }
-  if (response.data.code === 401) {
-    // 登录过期
-    return Promise.reject(new Error(response.data.msg));
-  }
-  if (response.data.code === 200) {
-    return response.data as any;
-  }
-  // 其他错误
-  return Promise.reject(new Error(response.data.msg));
-});
+service.interceptors.response.use(
+  (response: AxiosResponse<ResponseData<any>>) => {
+    /**
+     * code example
+     * code === 200 success
+     * code === 401 token expired
+     * ...
+     */
+    const res = response.data;
+    if (res.code !== 200) {
+      console.error(res.msg || 'response error');
+      if (res.code === 401) {
+        console.error(res.msg || '登录过期或未登录');
+        // todo something
+      }
+      return Promise.reject(new Error(res.msg || 'response error'));
+    }
+    return res.data;
+  },
+  (error) => {
+    console.error(error.msg);
+    return Promise.reject(error);
+  },
+);
 
-export const request = <T>(options: AxiosRequestConfig) => axios.request<T>(options);
+export const request = <T>(options: AxiosRequestConfig) => service.request<T>(options);

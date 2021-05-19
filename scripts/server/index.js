@@ -17,7 +17,7 @@ async function startServer() {
   const resPort = await choosePort(SERVER_PORT, SERVER_HOST);
   try {
     if (resPort !== null) {
-      server.listen(resPort, SERVER_HOST, err => {
+      server.listen(resPort, SERVER_HOST, (err) => {
         if (err) {
           return logger.error(err.message);
         }

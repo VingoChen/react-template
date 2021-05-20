@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Home = React.lazy(() => import(/* webpackChunkName: "Home" */ 'Src/views/Home'));
-const Todo = React.lazy(() => import(/** webpackChunkName: "Todo" */ 'Src/views/Todo'));
+const Todo = React.lazy(() => import(/* webpackChunkName: "Todo" */ 'Src/views/Todo'));
 
 type TRoutes = {
   path: string;

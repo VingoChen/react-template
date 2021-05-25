@@ -1,4 +1,4 @@
-import { ITodoItem } from '../../service/todo/types';
+import { ITodoItem } from '@/service/todo/types';
 // Action Type
 export enum TodoActionTypes {
   INCREMENT = 'INCREMENT',

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { TodoApi } from 'Src/service';
-import { RootState } from '..';
+import { TodoApi } from '@/service';
+import { RootState } from '../index';
 import { IQueryTodoAction, IIncrementAction, IDecrementAction, TodoActionTypes } from './types';
 
 export namespace TodoActions {

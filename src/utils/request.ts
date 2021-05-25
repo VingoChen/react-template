@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
-import { getToken } from 'Utils/cookie';
+import { getToken } from '@/utils/cookie';
 
 interface ResponseData<T> {
   code: number;

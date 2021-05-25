@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'Src/models';
-import { useActions } from 'Src/hooks';
-import { TodoActions } from 'Src/models/todo/actions';
+import { RootState } from '@/models';
+import { useActions } from '@/hooks';
+import { TodoActions } from '@/models/todo/actions';
 
 const Todo: React.FC = () => {
   const dispatch = useDispatch();

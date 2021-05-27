@@ -1,4 +1,4 @@
-# Easy Cli Template
+# Vingo Cli Template
 
 #### 目录说明
 

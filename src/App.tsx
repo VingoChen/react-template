@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import routes from '@/router';
-import ShowEasyV from '@/components/ShowEasyV';
+import Vingo from '@/components/Vingo';
 
 interface IProps {
   name: string;
@@ -12,7 +12,7 @@ const App: React.FC<IProps> = (props) => {
   return (
     <div>
       hello react {name}
-      <ShowEasyV />
+      <Vingo />
       <BrowserRouter>
         <Link to='/'>go to home</Link>
         <Link to='/todo'>go to todo</Link>

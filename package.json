@@ -4,9 +4,9 @@
   "description": "react项目模板",
   "main": "index.js",
   "scripts": {
-    "start": "vg dev --mode zhishui",
+    "start": "vg dev --mode vingo",
     "start:test": "vg dev --mode test",
-    "build": "vg build --mode zhishui --report 1",
+    "build": "vg build --mode vingo --report 1",
     "lint": "npm run lint-eslint && npm run lint-stylelint",
     "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
     "lint-stylelint": "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}",

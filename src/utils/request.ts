@@ -1,17 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 import { getToken } from '@/utils/cookie';
 
-interface ResponseData<T> {
-  code: number;
-
-  data: T;
-
-  msg: string;
-}
-
 // 默认配置
 const service = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
@@ -37,7 +29,7 @@ service.interceptors.request.use(
 
 // 响应拦截
 service.interceptors.response.use(
-  (response: AxiosResponse<ResponseData<any>>) => {
+  (response: AxiosResponse<any>) => {
     /**
      * code example
      * code === 200 success
@@ -53,7 +45,7 @@ service.interceptors.response.use(
       }
       return Promise.reject(new Error(res.msg || 'response error'));
     }
-    return res.data;
+    return res;
   },
   (error) => {
     console.error(error.msg);
@@ -61,4 +53,5 @@ service.interceptors.response.use(
   },
 );
 
-export const request = <T>(options: AxiosRequestConfig) => service.request<T>(options);
+export const request = <T>(options: AxiosRequestConfig) =>
+  service.request<T>(options).then((res) => res.data);

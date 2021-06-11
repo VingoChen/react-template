@@ -1,28 +1,22 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/models';
-import { useActions } from '@/hooks';
-import { TodoActions } from '@/models/todo/actions';
+import { useTodoStore } from '@/models/todo';
 
 const Todo: React.FC = () => {
-  const dispatch = useDispatch();
-  const todoActions = useActions<typeof TodoActions>(dispatch, TodoActions);
-  const { count, list } = useSelector((state: RootState) => state.todo);
-
+  const { count, list, increase, decreaseByNum, getTodoList } = useTodoStore();
   return (
     <div>
-      <button type='button' onClick={todoActions.increment}>
+      <button type='button' onClick={increase}>
         +
-      </button>
-      <button type='button' onClick={todoActions.decrement}>
-        -
       </button>
       <button
         type='button'
         onClick={() => {
-          todoActions.queryTodoList();
+          decreaseByNum(1);
         }}
       >
+        -
+      </button>
+      <button type='button' onClick={getTodoList}>
         fetch list
       </button>
       <div>count:{count}</div>

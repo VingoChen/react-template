@@ -4231,7 +4231,7 @@
     "tiny-warning" "^1.0.0"
     "value-equal" "^1.0.1"
 
-"hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.1", "hoist-non-react-statics@^3.3.2":
+"hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.1":
   "integrity" "sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U="
   "resolved" "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -6257,22 +6257,10 @@
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
 
-"react-is@^16.13.1", "react-is@^16.6.0", "react-is@^16.7.0", "react-is@^16.8.1":
+"react-is@^16.6.0", "react-is@^16.7.0", "react-is@^16.8.1":
   "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
   "resolved" "https://registry.nlark.com/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1619108197028&other_urls=https%3A%2F%2Fregistry.nlark.com%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz"
   "version" "16.13.1"
-
-"react-redux@^7.2.4":
-  "integrity" "sha1-HrtHQDK3LYBt4uBRnNB3YeIi4iU="
-  "resolved" "https://registry.nlark.com/react-redux/download/react-redux-7.2.4.tgz"
-  "version" "7.2.4"
-  dependencies:
-    "@babel/runtime" "^7.12.1"
-    "@types/react-redux" "^7.1.16"
-    "hoist-non-react-statics" "^3.3.2"
-    "loose-envify" "^1.4.0"
-    "prop-types" "^15.7.2"
-    "react-is" "^16.13.1"
 
 "react-router-dom@^5.2.0":
   "integrity" "sha1-nmWk0MReEyieZsexfH4XXQ6hVmI="
@@ -6303,7 +6291,7 @@
     "tiny-invariant" "^1.0.2"
     "tiny-warning" "^1.0.0"
 
-"react@^16.8.3 || ^17", "react@^17.0.2", "react@>=16.8.0":
+"react@^17.0.2", "react@>=16.8", "react@>=16.8.0":
   "integrity" "sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://registry.nlark.com/react/download/react-17.0.2.tgz?cache=0&sync_timestamp=1619108526958&other_urls=https%3A%2F%2Fregistry.nlark.com%2Freact%2Fdownload%2Freact-17.0.2.tgz"
   "version" "17.0.2"
@@ -6457,12 +6445,7 @@
   "resolved" "https://registry.npm.taobao.org/redux-devtools-extension/download/redux-devtools-extension-2.13.9.tgz?cache=0&sync_timestamp=1615042238538&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux-devtools-extension%2Fdownload%2Fredux-devtools-extension-2.13.9.tgz"
   "version" "2.13.9"
 
-"redux-thunk@^2.3.0":
-  "integrity" "sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI="
-  "resolved" "https://registry.nlark.com/redux-thunk/download/redux-thunk-2.3.0.tgz"
-  "version" "2.3.0"
-
-"redux@^3.1.0 || ^4.0.0", "redux@^4.0.0", "redux@^4.1.0":
+"redux@^3.1.0 || ^4.0.0", "redux@^4.0.0":
   "integrity" "sha1-6wSWefL1I8N58a/zRchhLylMiNQ="
   "resolved" "https://registry.nlark.com/redux/download/redux-4.1.0.tgz?cache=0&sync_timestamp=1619286844146&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fredux%2Fdownload%2Fredux-4.1.0.tgz"
   "version" "4.1.0"
@@ -8136,6 +8119,11 @@
   "integrity" "sha1-ApTrPe4FAo0x7hpfosVWpqrxChs="
   "resolved" "https://registry.npm.taobao.org/yocto-queue/download/yocto-queue-0.1.0.tgz?cache=0&sync_timestamp=1606290282107&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyocto-queue%2Fdownload%2Fyocto-queue-0.1.0.tgz"
   "version" "0.1.0"
+
+"zustand@^3.5.2":
+  "integrity" "sha512-HUCQI9O77/D/zvoWPNv4dwLriiiY2xtEqnQ0TVY8uaPjmOHls04Okd0w3sWUE9Ex2LaYlSk11DbPPIOZ6shEWg=="
+  "resolved" "https://registry.npmjs.org/zustand/-/zustand-3.5.2.tgz"
+  "version" "3.5.2"
 
 "zwitch@^1.0.0":
   "integrity" "sha1-0R1zgf/tFrdC9q97PyI9XNn+mSA="

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  list-style: none;
+
+  li {
+    cursor: pointer;
+  }
+}

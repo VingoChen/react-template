@@ -11,7 +11,7 @@ type TRoutes = {
 
 const routes: TRoutes[] = [
   {
-    path: '/',
+    path: '/home',
     exact: true,
     component: Home,
   },
